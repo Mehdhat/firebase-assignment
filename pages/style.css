@@ -1,0 +1,284 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    background-color: rgba(211, 204, 204, 0.192);
+}
+
+div.signup,
+div.signin{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.signup button,
+div.signin button,
+div.dashboard button,
+div.profile button {
+    background-color: #7749F8;
+    color: white;
+    border-radius: 7px;
+    width: 150px;
+    border: none;
+}
+
+div.signup button:hover,
+div.signin button:hover,
+div.dashboard button:hover,
+div.profile button:hover {
+    color: white;
+    background-color: #007bff;
+    font-weight: 500;
+}
+
+input.form-control:hover,
+input.form-control:active
+ {
+    border-color: #7749F8;
+    box-shadow: 0 0 0 0.25rem rgba(119, 73, 248, 0.25);
+}
+
+form {
+    padding: 50px 80px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+div.head{
+    font-size: 23px;
+    background-color: white;
+    border-bottom: 1px dashed black;
+}
+
+div.head h1, div.myblogs h1,div.allblogs h1,div.person-blog h1 {
+    color: rgb(59, 59, 59);
+    font-weight: bolder;
+    padding: 5px 50px;
+}
+
+div.purplehead {
+    background-color: #7749F8;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 50px;
+    color: white;
+}
+
+div.purplehead h3 {
+    font-weight: bolder;
+}
+
+div.purplehead a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    align-self: center;
+}
+
+@media screen and (max-width: 382px) {
+    form {
+        padding: 50px 30px;
+    }
+}
+div.head .sublinks a{
+    padding: 0px 15px;
+}
+
+
+@media only screen and (max-width: 768px) {
+    
+    div.dashboard form {
+      padding: 20px; 
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1200px) {
+    div.dashboard {
+      max-width: 80vw;
+    }
+  }
+  
+  form textarea.post {
+    height: 35vh;
+    resize: none;
+    width: 100%;
+  }
+  div.dashboard {
+    display: flex;
+    justify-content: center;
+  }
+  
+  div.dashboard form {
+    padding: 40px;
+    width: 80vw;
+    margin-top: 25px;
+  }
+  
+  form .btn {
+    margin-top: 10px;
+  }
+  .card {
+    max-width: 80vw;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 70px;
+    margin-top: 30px;
+}
+
+div.card .profile-pic {
+    /* border-radius: 50%; */
+    width: 180px;
+    height: 200px;
+    margin-right: 10px;
+}
+
+div.card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+div.card p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgb(55, 54, 54);
+}
+
+div.card a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+    .card {
+        padding: 10px;
+    }
+    .sublinks {
+   margin: -10px;
+    }
+   
+    .head h3{
+        font-size: 14px;
+    }
+}
+     div.profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 50px auto;
+        width:50vw ;
+    }
+    
+    div.profile form input {
+        display: block;
+        margin: 30px;
+        width: 45vw;
+    }
+    
+    div.profile form {
+        width: 80vw;
+    }
+    
+    div.profile button {
+        width: 180px;
+        padding: 7px;
+        margin-left: 30px; /* Add this line to align the button 20px to the left */
+    }
+    div.profile h2{
+        padding: 5px 25px;
+        font-weight: bold;
+    }
+    div.img-sec{
+        text-align: center;
+    }
+    div.img-sec a { 
+        font-size: 13px;
+        color: black;
+line-gap-override:12px;
+font-weight: bold;
+    }
+    div.img-sec h2{
+        color: #7749F8;
+        font-weight: bolder;
+    }
+.dashboard{
+    display: block;
+}
+.dashboard input{
+    outline: none;
+    width: 100%;
+    margin: 10px;
+    height: 30px;
+    padding: 5px;
+}
+.dashboard textarea{
+    outline: none;
+    width: 100%;
+    height: 130px;
+    margin: 10px;
+    padding: 5px;
+}
+.dashboard button{
+    padding: 10px 20px;
+}
+
+#postsList {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.post-item {
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px; /* Add space between posts */
+    width: 85%;
+}
+
+.post-item h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.post-item p {
+    line-height: 1.5;
+    color: #666;
+}
+
+.actions button {
+    background-color: #7749F8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #6658D3;
+}
+
+/* Ensure there's a gap between the "Publish Blog" button and the first post */
+.dashboard {
+    margin-bottom: 20px;
+}
+
+.post-image {
+  width: 220px;
+  height: 280px;
+}
+.containers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

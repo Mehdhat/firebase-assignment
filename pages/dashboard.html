@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="head">
+        <div class="purplehead">
+            <h3>Personal Blogging App</h3>
+            <div class="sublinks">
+                <a href="./allblogs.html">Feed</a>
+                <a href="./profile.html">Profile</a>
+                <a href="./signin.html">Log Out</a>
+            </div>
+        </div>
+        <h1>Dashboard</h1>
+    </div>
+    <div class="dashboard container">
+        <form id="publishForm">
+            <div class="row mb-3">
+                <input type="text" class="form-control" placeholder="Enter topic" id="inputTopic">
+            </div>
+            <div class="row mb-3">
+                <textarea class="form-control post" placeholder="What is in your mind?" id="inputTopicDescription"></textarea>
+            </div>
+            <button type="button" class="btn" onclick="publishPost()">Publish Blog</button>
+            <button type="button" class="btn" onclick="deleteAllPosts()">Delete All Posts</button>
+        </form>
+    </div>
+    <div>
+        <ul id="postsList" style="list-style-type: none;" class="containers">
+            <!-- Posts will be appended here by JavaScript -->
+        </ul> 
+    </div>
+    
+    <script>
+        // Function to save posts to local storage
+        function savePostsToLocalStorage() {
+            let postsList = document.getElementById("postsList").innerHTML;
+            localStorage.setItem("savedPosts", postsList);
+        }
+
+        // Function to load posts from local storage
+        function loadPostsFromLocalStorage() {
+            let savedPosts = localStorage.getItem("savedPosts");
+            if (savedPosts) {
+                document.getElementById("postsList").innerHTML = savedPosts;
+            }
+        }
+
+        // Call the load function when the page loads
+        window.onload = loadPostsFromLocalStorage;
+
+        function publishPost() {
+            let inputTopic = document.getElementById("inputTopic").value.trim();
+            let inputTopicDescription = document.getElementById("inputTopicDescription").value.trim();
+            
+            if (inputTopic === "" || inputTopicDescription === "") {
+                alert("Please fill in both the topic and description!");
+                return;
+            }
+
+            // Add current date
+            let currentDate = new Date().toLocaleDateString();
+            inputTopic += " - " + currentDate;
+
+            let postsList = document.getElementById("postsList");
+
+            let postItem = document.createElement("li");
+            postItem.classList.add("post-item");
+
+            let topicElement = document.createElement("h3");
+            topicElement.textContent = inputTopic;
+
+            let descriptionElement = document.createElement("p");
+            descriptionElement.textContent = inputTopicDescription;
+
+            let postImage = document.createElement("img");
+            postImage.src = "./images/person.jpg"; // Replace with the path to your default image
+            postImage.alt = "Post Image";
+            postImage.classList.add("post-image");
+
+            let actionsElement = document.createElement("div");
+            actionsElement.classList.add("actions");
+
+            let editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.className = "edit-btn";
+            editBtn.onclick = function() {
+                let newTopic = prompt("Edit your topic", topicElement.textContent);
+                let newDescription = prompt("Edit your description", descriptionElement.textContent);
+                if (newTopic && newDescription) {
+                    topicElement.textContent = newTopic;
+                    descriptionElement.textContent = newDescription;
+                    savePostsToLocalStorage(); // Update local storage after editing
+                }
+            };
+
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = function() {
+                if (confirm("Are you sure you want to delete this post?")) {
+                    postItem.remove();
+                    savePostsToLocalStorage(); // Update local storage after deletion
+                }
+            };
+
+            actionsElement.appendChild(editBtn);
+            actionsElement.appendChild(deleteBtn);
+
+            postItem.appendChild(postImage);
+            postItem.appendChild(topicElement);
+            postItem.appendChild(descriptionElement);
+            postItem.appendChild(actionsElement);
+
+            postsList.appendChild(postItem);
+
+            // Clear input fields after publishing
+            document.getElementById("inputTopic").value = "";
+            document.getElementById("inputTopicDescription").value = "";
+
+            savePostsToLocalStorage(); // Save posts to local storage after publishing
+        }
+
+        function deleteAllPosts() {
+            if (confirm("Are you sure you want to delete all posts?")) {
+                document.getElementById("postsList").innerHTML = ""; // Remove all posts from the list
+                localStorage.removeItem("savedPosts"); // Remove posts from local storage
+            }
+        }
+    </script>
+</body>
+</html>
